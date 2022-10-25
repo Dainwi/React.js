@@ -1,22 +1,17 @@
-// import logo from './logo.svg';
-import { Route, Routes } from "react-router-dom";
-import "./App.css";
-import Footer from "./components/Footer";
-import Home from "./components/Home";
-import Nav from "./components/Nav";
-import Singin from "./components/Singin";
-import Singup from "./components/Singup";
+import Navbar from "./components/Navbar";
+import Dropdown from "./components/Dropdown";
+import { useState } from "react";
 
 function App() {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggle = () => {
+    setIsOpen(!isOpen);
+  };
   return (
     <>
-      <Nav />
-      <Routes>
-        <Route path="/" element={<Home/>}/>
-        <Route path="/Singin" element={<Singin/>}/>
-        <Route path="/Singup" element={<Singup/>}/>
-      </Routes>
-      <Footer/>
+      <Navbar toggle={toggle}/>
+      <Dropdown isOpen={isOpen} toggle={toggle}/>
     </>
   );
 }
