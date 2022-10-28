@@ -1,6 +1,7 @@
 import Navbar from "./components/Navbar";
 import Dropdown from "./components/Dropdown";
 import { useState } from "react";
+import Home from "./components/Home";
 
 function App() {
   const [isOpen, setIsOpen] = useState(false);
@@ -12,6 +13,7 @@ function App() {
     <>
       <Navbar toggle={toggle}/>
       <Dropdown isOpen={isOpen} toggle={toggle}/>
+      <Home/>
     </>
   );
 }
