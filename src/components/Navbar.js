@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled, { css } from "styled-components/macro";
 import { Link } from "react-router-dom";
 import { MenuData } from "../data/MenuData";
@@ -13,6 +13,7 @@ const Nav = styled.nav`
   z-index: 100;
   position: fixed;
   width: 100%;
+  align-items: center;
 `;
 
 const NavLink = css`
@@ -73,7 +74,7 @@ const NavBtn = styled.div`
 `;
 
 const Button = styled(motion.button)`
-  padding: 1rem 2rem;
+  padding: 0.5rem 2rem;
   font-size: 1rem;
   border: 2px solid #fff;
   border-radius: 4px;
@@ -85,9 +86,25 @@ const Button = styled(motion.button)`
   align-items: center;
 `;
 
+
+
 const Navbar = ({ toggle }) => {
+
+const [navbar, setNavbar] = useState(false);
+
+  const changeBackground = () => {
+    console.log(window.scrollY);
+    if(window.scrollY >= 12){
+        setNavbar(true)
+    }else{
+      setNavbar(false);
+    }
+  };
+
+
+  window.addEventListener('scroll', changeBackground);
   return (
-    <Nav>
+    <Nav className={navbar ? 'navbar active' : 'navbar'}>
       <Logo to="/">DAINWI.io</Logo>
       <MenuBars onClick={toggle} />
       <NavMenu>
